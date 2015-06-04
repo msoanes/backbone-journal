@@ -4,7 +4,19 @@ window.JournalApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    var posts = new JournalApp.Collections.Posts();
+    var routerOptions = {
+      $rootEl: $('.content'),
+      posts: posts
+    };
+    posts.fetch({
+      success: function () {
+        var router = new JournalApp.Routers.PostsRouter(routerOptions);
+        Backbone.history.start();
+        var sidebar = new JournalApp.Views.PostsIndex({collection: posts});
+        $('.sidebar').html(sidebar.render().$el);
+      }
+    });
   }
 };
 

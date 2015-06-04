@@ -1,0 +1,19 @@
+<h2>Form</h2>
+<ul class="errors"></ul>
+<form>
+  <p>
+    <label>Title
+      <input type="text" name="post[title]" value="<%= post.escape('title') %>">
+    </label>
+  </p>
+
+  <p>
+    <label>Body
+      <textarea name="post[body]"><%= post.escape('body') %></textarea>
+    </label>
+  </p>
+  <p>
+    <button class="save">Save</button>
+    <button class="cancel">Cancel</button>
+  </p>
+</form>
